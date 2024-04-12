@@ -5,21 +5,21 @@ from copy import deepcopy
 from scipy import interpolate
 
 parser = argparse.ArgumentParser('Preprocessing: Generate training/validation/testing features from pdb')
-parser.add_argument('--MDfolder', type=str, default="data/pdb/",
+parser.add_argument('--MDfolder', type=str, default=input("Enter PATH of MDtraj file(.pdb):"),
                     help='folder of pdb MD')
-parser.add_argument('--pdb-start', type=int, default="1",
+parser.add_argument('--pdb-start', type=int, default=input("select pdb file window from start,e.g.1:"),
                     help='select pdb file window from start, e.g. in tutorial it is ca_1.pdb')
-parser.add_argument('--pdb-end', type=int, default="56",
+parser.add_argument('--pdb-end', type=int, default=input("select pdb file window to end,e.g.56:"),
                     help='select pdb file window to end')
-parser.add_argument('--num-residues', type=int, default=77,
+parser.add_argument('--num-residues', type=int, default=input("Number of residues of the MD pdb,e.g. 77"),
                     help='Number of residues of the MD pdb')
-parser.add_argument('--feature-size', type=int, default=6,
+parser.add_argument('--feature-size', type=int, default=input("The number of features used in study( position (X,Y,Z) + velocity (X,Y,Z) ).e.g.6:"),
                     help='The number of features used in study( position (X,Y,Z) + velocity (X,Y,Z) ).')
-parser.add_argument('--train-interval', type=int, default=60,
+parser.add_argument('--train-interval', type=int, default=input("intervals in trajectory in training,e.g.60:"),
                     help='intervals in trajectory in training')
-parser.add_argument('--validate-interval', type=int, default=60,
+parser.add_argument('--validate-interval', type=int, default=input("intervals in trajectory in validate,e.g.60:"),
                     help='intervals in trajectory in validate')
-parser.add_argument('--test-interval', type=int, default=100,
+parser.add_argument('--test-interval', type=int, default=input("intervals in trajectory in test.e.g.100:"),
                     help='intervals in trajectory in test')
 args = parser.parse_args()
 
